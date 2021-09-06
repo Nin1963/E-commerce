@@ -1,0 +1,6 @@
+# test:
+#     path: /test/{age<\d+>?0}
+#     controller: App\Controller\TestController::test
+#     methods: [GET, POST]
+#     host: localhost
+#     # schemes: [htpps, htpp]

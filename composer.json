@@ -9,9 +9,8 @@
         "symfony/dotenv": "5.1.*",
         "symfony/flex": "^1.3.1",
         "symfony/framework-bundle": "5.1.*",
+        "symfony/var-dumper": "5.1.*",
         "symfony/yaml": "5.1.*"
-    },
-    "require-dev": {
     },
     "config": {
         "optimize-autoloader": true,
