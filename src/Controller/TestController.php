@@ -8,17 +8,21 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TestController
 {
+    /**
+     * @Route("/", name="index")
+     */
     public function index()
     {
-        var_dump("Çà fonctionne!");
-        die();
+        dd("Çà fonctionne!");
     }
 
     /**
-     * @Route("/test/{age<d+>?0}", name="test", methods={"GET", "POST"}, host="localhost", schemes={"http", htpps"})
+     * @Route("/test/{age<d+>?0}", name="test", methods={"GET", "POST"}, host="localhost")
      */
     public function test(Request $request, $age)
     {
         return new Response("Vous avez $age ans");
     }
+
+    
 }
