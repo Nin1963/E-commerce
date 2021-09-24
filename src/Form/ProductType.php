@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProductType extends AbstractType
 {
@@ -28,7 +29,8 @@ class ProductType extends AbstractType
             'label' => 'Nom du produit',
             'attr' => [
                 'placeholder' =>'Tapez le nom du produit'
-            ]
+            ],
+            'required' => false
         ])
             ->add('shortDescription', TextareaType::class, [
                 'label' => 'Description courte',
@@ -40,8 +42,11 @@ class ProductType extends AbstractType
             ])
             ->add('price', MoneyType::class, [
                 'label' => 'Prix du produit',
-                'attr' => ['placeholder' => 'Tapez le prix du produit en €'],
-                'divisor' => 100
+                'attr' => [
+                    'placeholder' => 'Tapez le prix du produit en €'
+                ],
+                'divisor' => 100,
+                'required' => false,
             ])
             ->add('category', EntityType::class, [
                 'label' => 'Catégorie',
