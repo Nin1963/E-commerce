@@ -14,6 +14,20 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CategoryController extends AbstractController
 {
+    protected $categoryRepository;
+
+    public function __constuct(CategoryRepository $categoryRepository) {
+        $this->categoryRepository = $categoryRepository;
+    }
+
+    public function renderMenuList() {
+       $categories = $this->categoryRepository->findAll();
+
+        return $this->render('category/_menu.html.twig', [
+            'categories' => $categories
+        ]);
+    }
+
     /**
      * @Route("/admin/category/create", name="category_create")
      */
@@ -25,7 +39,7 @@ class CategoryController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted()) {
+        if($form->isSubmitted() && $form->isValid()) {
             $category->setSlug(strtolower(($slugger->slug($category->getName()))));
 
             $em->persist($category);
@@ -45,7 +59,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("admin/category/{id}/edit", name="category_edit")
      */
-    public function edit($id, CategoryRepository $categoryRepository,Request $request, EntityManagerInterface $em) {
+    public function edit($id, CategoryRepository $categoryRepository,Request $request, SluggerInterface $slugger,EntityManagerInterface $em) {
 
         $category = $categoryRepository->find($id);
 
@@ -53,7 +67,8 @@ class CategoryController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted()) {
+        if($form->isSubmitted() && $form->isValid()) {
+            $category->setSlug(strtolower(($slugger->slug($category->getName()))));
             $em->flush();
 
             return $this->redirectToRoute('homepage');

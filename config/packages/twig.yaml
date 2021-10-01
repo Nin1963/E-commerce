@@ -3,3 +3,5 @@ twig:
     form_themes:
         - bootstrap_4_layout.html.twig
         # - shared/_badgeErrors.html.twig
+    globals:
+        categoryRepository: "@App\\Repository\\CategoryRepository"
