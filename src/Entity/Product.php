@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
@@ -22,7 +24,6 @@ class Product
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Le nom du produit est obligatoire !")
      * @Assert\Length(min=3, max=255, minMessage="Le nom du produit doit comporter au moins 3 caractères")
-     * @Assert\Length(min=10, minMessage="Le nom du produit doit faire au moins 10 caractères")
      */
     private $name;
 
@@ -38,7 +39,7 @@ class Product
     private $slug;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
      */
     private $category;
 
@@ -74,13 +75,14 @@ class Product
     //     ]);
     // }
 
-    public function getUppercaseName() : string {
-        return strtoupper($this->name);
-    }
-
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getUppercaseName(): string
+    {
+        return strtoupper($this->name);
     }
 
     public function getName(): ?string
