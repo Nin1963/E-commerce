@@ -48,7 +48,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/{category_slug}/{slug}", name="product_show", priority=-1)
      */
-    public function show($slug, $prenom, ProductRepository $productRepository, Request $request)
+    public function show($slug, ProductRepository $productRepository, Request $request, EventDispatcherInterface $dispatcher)
     {
         $product = $productRepository->findOneBy([
             'slug' => $slug
@@ -57,6 +57,9 @@ class ProductController extends AbstractController
         if (!$product) {
             throw $this->createNotFoundException("Le produit demandé n'existe pas");
         }
+
+        $productEvent = new ProductViewEvent($product);
+        $dispatcher->dispatch($productEvent, 'product.view');
 
         return $this->render('product/show.html.twig', [
             'product' => $product
