@@ -84,9 +84,5 @@
         }
     },
     "require-dev": {
-        "fakerphp/faker": "^1.16",
-        "symfony/debug-bundle": "5.1.*",
-        "symfony/stopwatch": "5.1.*",
-        "symfony/web-profiler-bundle": "5.1.*"
     }
 }
