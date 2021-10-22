@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "12d3999647e1e19294ab07a6f1cbcada",
+=======
+    "content-hash": "3b20552f9863c5e45f746690a5798740",
+>>>>>>> parent of 66f4500... Ajout du fichier .htaccess
     "packages": [
         {
             "name": "bluemmb/faker-picsum-photos-provider",
@@ -2614,6 +2618,7 @@
             "time": "2020-09-08T19:29:20+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/apache-pack",
             "version": "v1.0.1",
             "source": {
@@ -2636,6 +2641,8 @@
             "time": "2017-12-12T01:46:35+00:00"
         },
         {
+=======
+>>>>>>> parent of 66f4500... Ajout du fichier .htaccess
             "name": "symfony/cache",
             "version": "v5.1.2",
             "source": {
