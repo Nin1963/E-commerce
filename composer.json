@@ -1,97 +1,84 @@
 {
-    "type": "project",
-    "license": "proprietary",
-    "require": {
-        "php": "^7.4.3",
-        "ext-ctype": "*",
-        "ext-iconv": "*",
-        "bluemmb/faker-picsum-photos-provider": "^1.0",
-        "cocur/slugify": "^4.0",
-        "composer/package-versions-deprecated": "1.11.99.4",
-        "doctrine/common": "^2",
-        "doctrine/doctrine-bundle": "^2",
-        "doctrine/doctrine-fixtures-bundle": "^3.3",
-        "doctrine/doctrine-migrations-bundle": "^2",
-        "doctrine/orm": "^2",
-        "fzaninotto/faker": "^1.9",
-        "fakerphp/faker": "^1.16",
-        "liorchamla/faker-prices": "^1.0",
-        "mbezhanov/faker-provider-collection": "^1.2",
-        "sensio/framework-extra-bundle": "^5.5",
-        "stripe/stripe-php": "^7.52",
-        "symfony/apache-pack": "^1.0",
-        "symfony/console": "5.1.*",
-        "symfony/dotenv": "5.1.*",
-        "symfony/flex": "^1.3.1",
-        "symfony/form": "5.1.*",
-        "symfony/framework-bundle": "5.1.*",
-        "symfony/mailer": "5.1.*",
-        "symfony/maker-bundle": "^1.14",
-        "symfony/monolog-bundle": "^3.0",
-        "symfony/security-bundle": "5.1.*",
-        "symfony/string": "5.1.*",
-        "symfony/twig-bundle": "5.1.*",
-        "symfony/validator": "5.1.*",
-        "symfony/yaml": "5.1.*",
-        "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "php": "^7.2.5",
+    "ext-ctype": "*",
+    "ext-iconv": "*",
+    "bluemmb/faker-picsum-photos-provider": "^1.0",
+    "cocur/slugify": "^4.0",
+    "doctrine/doctrine-fixtures-bundle": "^3.3",
+    "fzaninotto/faker": "^1.9",
+    "liorchamla/faker-prices": "^1.0",
+    "mbezhanov/faker-provider-collection": "^1.2",
+    "sensio/framework-extra-bundle": "^5.5",
+    "stripe/stripe-php": "^7.52",
+    "symfony/apache-pack": "^1.0",
+    "symfony/console": "5.1.*",
+    "symfony/debug-pack": "^1.0",
+    "symfony/dotenv": "5.1.*",
+    "symfony/flex": "^1.3.1",
+    "symfony/form": "5.1.*",
+    "symfony/framework-bundle": "5.1.*",
+    "symfony/mailer": "5.1.*",
+    "symfony/maker-bundle": "^1.14",
+    "symfony/orm-pack": "^1.0",
+    "symfony/security-bundle": "5.1.*",
+    "symfony/string": "5.1.*",
+    "symfony/twig-pack": "^1.0",
+    "symfony/validator": "5.1.*",
+    "symfony/yaml": "5.1.*"
+  },
+  "require-dev": {},
+  "config": {
+    "preferred-install": {
+      "*": "dist"
     },
-    "require-dev": {
-        "symfony/debug-bundle": "5.1.*",
-        "symfony/stopwatch": "5.1.*",
-        "symfony/web-profiler-bundle": "5.1.*"
-        
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  },
+  "replace": {
+    "paragonie/random_compat": "2.*",
+    "symfony/polyfill-ctype": "*",
+    "symfony/polyfill-iconv": "*",
+    "symfony/polyfill-php72": "*",
+    "symfony/polyfill-php71": "*",
+    "symfony/polyfill-php70": "*",
+    "symfony/polyfill-php56": "*"
+  },
+  "scripts": {
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
     },
-    "config": {
-      "preferred-install": {
-        "*": "dist"
-      },
-      "sort-packages": true
-    },
-    "autoload": {
-      "psr-4": {
-        "App\\": "src/"
-      }
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "App\\Tests\\": "tests/"
-      }
-    },
-    "replace": {
-      "paragonie/random_compat": "2.*",
-      "symfony/polyfill-ctype": "*",
-      "symfony/polyfill-iconv": "*",
-      "symfony/polyfill-php72": "*",
-      "symfony/polyfill-php71": "*",
-      "symfony/polyfill-php70": "*",
-      "symfony/polyfill-php56": "*"
-    },
-    "scripts": {
-      "auto-scripts": {
-        "cache:clear": "symfony-cmd",
-        "assets:install %PUBLIC_DIR%": "symfony-cmd"
-      },
-      "database-setup": [
-        "php bin/console doctrine:migrations:migrate --no-interaction",
-        "php bin/console doctrine:fixtures:load --no-interaction"
-      ],
-      "post-install-cmd": [
-        "@auto-scripts",
-        "@database-setup"
-        
-      ],
-      "post-update-cmd": [
-        "@auto-scripts"
-      ]
-    },
-    "conflict": {
-      "symfony/symfony": "*"
-    },
-    "extra": {
-      "symfony": {
-        "allow-contrib": false,
-        "require": "5.1.*"
-      }
+    "database-setup": [
+      "php bin/console doctrine:migrations:migrate --no-interaction",
+      "php bin/console doctrine:fixtures:load --no-interaction"
+    ],
+    "post-install-cmd": [
+      "@auto-scripts",
+      "@database-setup"
+    ],
+    "post-update-cmd": [
+      "@auto-scripts"
+    ]
+  },
+  "conflict": {
+    "symfony/symfony": "*"
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": false,
+      "require": "5.1.*"
     }
   }
+}
