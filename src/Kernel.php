@@ -11,16 +11,6 @@ class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
-    public function registerBundles(): iterable
-    {
-        $contents = require $this->getProjectDir().'/config/bundles.php';
-        foreach ($contents as $class => $envs) {
-            if ($envs[$this->environment] ?? $envs['all'] ?? false) {
-                yield new $class();
-            }
-        }
-    }
-
     protected function configureContainer(ContainerConfigurator $container): void
     {
         $container->import('../config/{packages}/*.yaml');
